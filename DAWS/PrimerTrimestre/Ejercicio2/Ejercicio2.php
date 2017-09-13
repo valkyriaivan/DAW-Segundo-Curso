@@ -15,7 +15,12 @@
     			for ($n1=1; $n1<=lado; $n1++){
         			echo "<tr>";
         			for ($n2=1; $n2<=lado; $n2++){
-            			echo "<td>", $contador, "</td>";
+						if (($contador % 2) == 0){
+							echo "<td>", $contador, "</td>";
+						}
+						else{
+							echo "<td bgcolor='red'>", $contador, "</td>";
+						}
             			$contador=$contador+1;
         			}
         			echo "</tr>";
