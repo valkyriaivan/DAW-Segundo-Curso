@@ -17,6 +17,8 @@
                         if ((mime_content_type($file) == "image/jpeg") || (mime_content_type($file) == "image/gif")){
                           echo "<img src='$file'><br>";
                         }
+                        $ext = pathinfo($file, PATHINFO_EXTENSION);
+                        echo "$ext";
                     }
                     closedir($dir);
                 }
