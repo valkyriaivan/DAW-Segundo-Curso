@@ -70,7 +70,7 @@
                                     echo "<li><a href='$file'>$fileNew</a></li>";
                                   }
                                 }
-                                echo "</li>";
+                                echo "</ul>";
                                 closedir($dir);
                               }
                             }
