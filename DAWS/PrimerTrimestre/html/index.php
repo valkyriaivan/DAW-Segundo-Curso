@@ -21,7 +21,6 @@
                     <div class="well-block">
                         <h1>Ivan García Gálvez</h1>
                         <h5 class="small-title ">IES El Caminàs</h5>
-                        <!--<p>Esta es nuestra <a href="">página</a></p>-->
                         <p>
             							Tengo 19 años. Soy un estudiante de Desarrollo de Aplicaciones Web en el instituto El caminàs de Castellón.
             						</p>
