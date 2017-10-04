@@ -104,17 +104,20 @@
                   <input type="text" class="form-control" id="correo" name="correo"  placeholder="Introduce tu correo electrónico">
                 </div>
                 <div class="form-group <?php if ($conocidoErr) echo 'has-error';?>">
-                  Indica como nos has conocido:<hr>
-                  <input type="checkbox" name="conocido[]" value="Web" <?php echo IsChecked(conocido,Web) ? "checked" : ""; ?>> <label>Web</label>
-                  <input type="checkbox" name="conocido[]" value="Amigo" <?php echo IsChecked(conocido,Amigo) ? "checked" : ""; ?>> <label>Amigo</label>
-                  <input type="checkbox" name="conocido[]" value="Prensa" <?php echo IsChecked(conocido,Prensa) ? "checked" : ""; ?>> <label>Prensa</label>
-                  <input type="checkbox" name="conocido[]" value="Televisión" <?php echo IsChecked(conocido,Television) ? "checked" : ""; ?>> <label>Televisión</label><br>
+                  <fieldset>
+                    <legend>Indica como nos has conocido:</legend>
+                    <input type="checkbox" name="conocido[]" value="Web" <?php echo IsChecked(conocido,Web) ? "checked" : ""; ?>> <label>Web</label>
+                    <input type="checkbox" name="conocido[]" value="Amigo" <?php echo IsChecked(conocido,Amigo) ? "checked" : ""; ?>> <label>Amigo</label>
+                    <input type="checkbox" name="conocido[]" value="Prensa" <?php echo IsChecked(conocido,Prensa) ? "checked" : ""; ?>> <label>Prensa</label>
+                    <input type="checkbox" name="conocido[]" value="Televisión" <?php echo IsChecked(conocido,Television) ? "checked" : ""; ?>> <label>Televisión</label><br>
+                  </fieldset>
                 </div>
-                <br>
                 <div class="form-group <?php if ($contactoErr) echo 'has-error';?>">
-                  Por favor, introduzca su metodo de contacto favorito:<hr>
-                  <input type="radio" name="contacto" value="Correo" checked> <label>Correo</label>
-                  <input type="radio" name="contacto" value="Telefono" > <label>Teléfono</label>
+                  <fieldset>
+                    <legend>Por favor, introduzca su metodo de contacto favorito:</legend>
+                    <input type="radio" name="contacto" value="Correo" checked> <label>Correo</label>
+                    <input type="radio" name="contacto" value="Telefono" > <label>Teléfono</label>
+                  </fieldset>
                 </div>
                 <div>
                   <label for="comentario">Comentarios:</label>
