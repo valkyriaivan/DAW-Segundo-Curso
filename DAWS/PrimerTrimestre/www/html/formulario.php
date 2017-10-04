@@ -20,8 +20,24 @@
               $data = htmlspecialchars($data);
               return $data;
             }
+            function IsChecked($chkname,$value)
+            {
+                if(!empty($_POST[$chkname]))
+                {
+                    foreach($_POST[$chkname] as $chkval)
+                    {
+                        if($chkval == $value)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
             $metodo = $_SERVER["REQUEST_METHOD"];
-            $nombre = $correo = $conocido = $contacto = $comentario = "";
+            $nombre = $correo  = $contacto = $comentario = "";
+            $conocido = array();
+            $nombreErr = $emailErr = $conocidoErr = $contactoErr = $comentarioErr = "";
             $error = false;
             $errores = array();
             if ($metodo == "POST") {
@@ -40,12 +56,13 @@
                 array_push($errores, "Seleccione una preferencia de contacto.");
                 $contactoErr = true;
               }
-              $conocido = test_input($_POST["conocido"]);
 
-              if($conocido == ""){
+              $conocido = $_POST["conocido"];
+              if(empty($conocido)){
                 array_push($errores, "Seleccione la forma en la que nos conoció.");
-                $contactoErr = true;
+                $conocidoErr = true;
               }
+
               $comentario = $_POST["comentario"];
 
               if (sizeOf($errores) > 0){
@@ -56,8 +73,16 @@
                   echo "<div>Nombre: $nombre<br/>";
                   echo "Correo: $correo<br/>";
                   echo "Preferencia de contacto: $contacto<br/>";
-                  echo "Nos conociste mediante: $conocido<br/>";
-                  echo "Comentario: $comentario </div>";
+                  echo "Nos conociste mediante: ";
+                  foreach ($conocido as $cono){
+                    if($cono !== end($conocido)){
+                      echo $cono . ", ";
+                    }
+                    else{
+                      echo $cono . ".";
+                    }
+                  }
+                  echo "<br>Comentario: $comentario </div>";
                   echo "Enviar otro <a href='" . htmlspecialchars($_SERVER['PHP_SELF']) . "'>mensaje</a>";
               }
 
@@ -70,32 +95,32 @@
               }
               ?>
               <form action="" method="post">
-                <div class="form-group">
+                <div class="form-group <?php if ($nombreErr) echo 'has-error';?>">
                   <label for="nombre">Nombre completo</label>
                   <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo">
                 </div>
-                <div class="form-group">
+                <div class="form-group <?php if ($emailErr) echo 'has-error';?>">
                   <label for="correo">Correo</label>
                   <input type="text" class="form-control" id="correo" name="correo"  placeholder="Introduce tu correo electrónico">
                 </div>
-                <div>
+                <div class="form-group <?php if ($conocidoErr) echo 'has-error';?>">
                   Indica como nos has conocido:<hr>
-                  <input type="checkbox" name="conocido" value="Web" checked> <label>Web</label>
-                  <input type="checkbox" name="conocido" value="Amigo"> <label>Amigo</label>
-                  <input type="checkbox" name="conocido" value="Prensa"> <label>Prensa</label>
-                  <input type="checkbox" name="conocido" value="Televisión"> <label>Televisión</label><br>
+                  <input type="checkbox" name="conocido[]" value="Web" <?php echo IsChecked(conocido,Web) ? "checked" : ""; ?>> <label>Web</label>
+                  <input type="checkbox" name="conocido[]" value="Amigo" <?php echo IsChecked(conocido,Amigo) ? "checked" : ""; ?>> <label>Amigo</label>
+                  <input type="checkbox" name="conocido[]" value="Prensa" <?php echo IsChecked(conocido,Prensa) ? "checked" : ""; ?>> <label>Prensa</label>
+                  <input type="checkbox" name="conocido[]" value="Televisión" <?php echo IsChecked(conocido,Television) ? "checked" : ""; ?>> <label>Televisión</label><br>
                 </div>
                 <br>
-                <div>
+                <div class="form-group <?php if ($contactoErr) echo 'has-error';?>">
                   Por favor, introduzca su metodo de contacto favorito:<hr>
                   <input type="radio" name="contacto" value="Correo" checked> <label>Correo</label>
-                  <input type="radio" name="contacto" value="Telefono"> <label>Teléfono</label>
+                  <input type="radio" name="contacto" value="Telefono" > <label>Teléfono</label>
                 </div>
                 <div>
                   <label for="comentario">Comentarios:</label>
                   <textarea class="form-control" rows="5" name="comentario"></textarea>
                 </div>
-                <button type="submit">Enviar</button>
+                <button type="submit" class="btn btn-default">Enviar</button>
               </form>
             <?php
             }
