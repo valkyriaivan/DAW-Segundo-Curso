@@ -1,16 +1,10 @@
-<?php $nameTitle = "" ?>
 <?php
+  $nameTitle = "Conversor";
+  $tituloEj = "Conversor de moneda";
+  $descEj = "Conversor de euros a dolares.";
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-       <h1>Conversor de moneda</h1>
-      <p>Conversor de euros a dolares.</p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
           <?php
             $metodo = $_SERVER["REQUEST_METHOD"];
             $cant = "";
@@ -49,12 +43,7 @@
             <?php
             }
           ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>

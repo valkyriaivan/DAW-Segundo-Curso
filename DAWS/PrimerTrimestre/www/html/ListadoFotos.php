@@ -1,16 +1,10 @@
-<?php $nameTitle = "Inicio" ?>
 <?php
+  $nameTitle = "Listado de fotos";
+  $tituloEj = "Listado de fotos";
+  $descEj = "Muestra las imágenes de una carpeta. Si estas no tienen miniatura, crea una y después la muestra.";
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <h1>LIstar fotos</h1>
-      <p>Comprueba si </p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
           <?php
             $dir = "listado_fotos2/";
 
@@ -34,11 +28,7 @@
               }
             }
           ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>

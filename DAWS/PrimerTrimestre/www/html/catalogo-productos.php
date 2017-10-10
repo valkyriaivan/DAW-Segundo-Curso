@@ -1,22 +1,10 @@
-<?php $nameTitle = "Catalogo de productos" ?>
 <?php
+  $nameTitle = "Catalogo de productos";
+  $tituloEj = "Catalogo de productos";
+  $descEj = "Muestra el producto que pida el usuario.";
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<style>
-  .art::after{
-    clear:both;
-    float:none;
-  }
-</style>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-      <h1>Catalogo de productos</h1>
-      <p>Muestra el producto que pida el usuario.</p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
           <?php
             $nombreProducto = ["Xiaomi Redmi Note 4", "Bq Aquaris U Plus", "Meizu M5 Note ", "Apple iPhone 6", "Samsung Galaxy S6"];
             $descripcion = ["El Xiaomi Redmi Note 4 es uno de los mejores móviles del momento en su gama.", "Con Aquaris U Plus damos un paso más en el uso del metal.", "Meizu lanza un nuevo terminal de gama media alta para su línea M, el nuevo Meizu M5 Note.", "Apple presentó iPhone 6s, y con él, toda una avalancha de novedades y funcionalidades maceradas, como siempre, con un espectacular diseño.","El Samsunga Galaxy S6, lo último de la marca Coreana en smartphones. Sin duda un smartphone que no te dejará indiferente."];
@@ -72,11 +60,7 @@
                 echo "</ul>";
             }
           ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>

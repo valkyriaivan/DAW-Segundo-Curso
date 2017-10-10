@@ -1,16 +1,12 @@
-<?php $nameTitle = "" ?>
+<?php
+$nameTitle = "Formulario";
+$tituloEj = "Formulario";
+$descEj = "Formulario donde introducimos varios campos y realiza comprobaciones."
+?>
 <?php
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-       <h1>Formulario</h1>
-      <p>Formulario donde introducimos varios campos y realiza comprobaciones.</p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
           <?php
             function test_input($data) {
               $data = trim($data);
@@ -97,11 +93,11 @@
               <form action="" method="post">
                 <div class="form-group <?php if ($nombreErr) echo 'has-error';?>">
                   <label for="nombre">Nombre completo</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo">
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre completo" value="<?php echo $nombre == ""? $nombre: $nombre; ?>">
                 </div>
                 <div class="form-group <?php if ($emailErr) echo 'has-error';?>">
                   <label for="correo">Correo</label>
-                  <input type="text" class="form-control" id="correo" name="correo"  placeholder="Introduce tu correo electrónico">
+                  <input type="text" class="form-control" id="correo" name="correo"  placeholder="Introduce tu correo electrónico" value="<?php echo $correo == ""? $correo: $correo; ?>">
                 </div>
                 <div class="form-group <?php if ($conocidoErr) echo 'has-error';?>">
                   <fieldset>
@@ -109,31 +105,26 @@
                     <input type="checkbox" name="conocido[]" value="Web" <?php echo IsChecked(conocido,Web) ? "checked" : ""; ?>> <label>Web</label>
                     <input type="checkbox" name="conocido[]" value="Amigo" <?php echo IsChecked(conocido,Amigo) ? "checked" : ""; ?>> <label>Amigo</label>
                     <input type="checkbox" name="conocido[]" value="Prensa" <?php echo IsChecked(conocido,Prensa) ? "checked" : ""; ?>> <label>Prensa</label>
-                    <input type="checkbox" name="conocido[]" value="Televisión" <?php echo IsChecked(conocido,Television) ? "checked" : ""; ?>> <label>Televisión</label><br>
+                    <input type="checkbox" name="conocido[]" value="Television" <?php echo IsChecked(conocido,Television) ? "checked" : ""; ?>> <label>Televisión</label><br>
                   </fieldset>
                 </div>
                 <div class="form-group <?php if ($contactoErr) echo 'has-error';?>">
                   <fieldset>
                     <legend>Por favor, introduzca su metodo de contacto favorito:</legend>
-                    <input type="radio" name="contacto" value="Correo" checked> <label>Correo</label>
-                    <input type="radio" name="contacto" value="Telefono" > <label>Teléfono</label>
+                    <input type="radio" name="contacto" value="Correo" <?php echo ($contacto == "Correo" || $contacto == "" ? "checked" : ""); ?>> <label>Correo</label>
+                    <input type="radio" name="contacto" value="Telefono" <?php echo ($contacto == "Telefono" ? "checked" : ""); ?>> <label>Teléfono</label>
                   </fieldset>
                 </div>
                 <div>
                   <label for="comentario">Comentarios:</label>
-                  <textarea class="form-control" rows="5" name="comentario"></textarea>
+                  <textarea class="form-control" rows="5" name="comentario"><?php echo ($comentario == "" ? $comentario : $comentario); ?></textarea>
                 </div>
                 <button type="submit" class="btn btn-default">Enviar</button>
               </form>
             <?php
             }
           ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>

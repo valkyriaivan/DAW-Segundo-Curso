@@ -1,16 +1,10 @@
-<?php $nameTitle = "Tabla coloreada" ?>
 <?php
+  $nameTitle = "Tabla coloreada";
+  $tituloEj = "Tabla coloreada";
+  $descEj = "Realiza bucles para crear una tabla y colorea las celdas con números impares.";
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-       <h1>Tabla coloreada</h1>
-      <p>Realiza bucles para crear una tabla y colorea las celdas con números impares</p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
           <?php
         			echo "<table border=1>";
         			$contador=1;
@@ -30,12 +24,7 @@
           		}
         	    echo "</table>";
           ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>

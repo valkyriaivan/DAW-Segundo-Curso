@@ -1,24 +1,12 @@
-<?php $nameTitle = "" ?>
 <?php
+  $nameTitle = "";
+  $tituloEj = "";
+  $descEj = "";
   include("php/header.php");
+  include("php/headerEj.php");
 ?>
-<div class="space-medium bg-default">
-  <div class="container">
-    <div class="row">
-     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-       <h1>Nombre del programa</h1>
-      <p>Descripción del programa</p>
-      </div>
-      <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-        <div class="well-block">
-          <?php
-          ?>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+  <!---ESCRIBIR AQUÍ EL CODIGO-->
 <?php
+  include("php/footerEj.php");
   include("php/footer.php");
 ?>
