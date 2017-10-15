@@ -6,11 +6,6 @@
   include("php/headerEj.php");
 ?>
           <?php
-          //  if ($_FILES) {
-          //    echo '<pre>';
-          //    echo htmlspecialchars(print_r($_FILES, true));
-          //    echo '</pre>';
-          //  }
           $error = false;
           $errors = array();
 

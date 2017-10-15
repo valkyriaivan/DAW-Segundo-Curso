@@ -1,9 +1,7 @@
 <?php
-$nameTitle = "Formulario";
-$tituloEj = "Formulario";
-$descEj = "Formulario donde introducimos varios campos y realiza comprobaciones."
-?>
-<?php
+  $nameTitle = "Formulario";
+  $tituloEj = "Formulario";
+  $descEj = "Formulario donde introducimos varios campos y realiza comprobaciones.";
   include("php/header.php");
   include("php/headerEj.php");
 ?>
