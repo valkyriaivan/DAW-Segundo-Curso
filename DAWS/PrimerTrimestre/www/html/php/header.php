@@ -50,7 +50,6 @@
                                   }
                                 }
                                 echo "</ul>";
-                                closedir($dir);
                               }
                             }
                           ?>

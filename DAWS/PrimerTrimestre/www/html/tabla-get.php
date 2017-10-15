@@ -8,6 +8,7 @@
           <?php
             echo "<table border=1>";
             $contador=1;
+            $lado="";
             if (empty($_GET["lado"])){
               $nuevaUrl = $_SERVER['REQUEST_URI'] . "?lado=5";
               header("Location: $nuevaUrl");
