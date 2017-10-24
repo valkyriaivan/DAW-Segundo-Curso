@@ -1,10 +1,10 @@
 <?php
-  $nameTitle = "Login completo";
-  $tituloEj = "Login completo";
+  $nameTitle = "Registro";
+  $tituloEj = "Registro";
   $descEj = "Página de registro usando base de datos.";
-  include("login/login_functions.php");
-  include("php/header.php");
-  include("php/headerEj.php");
+  include("funciones/login_functions.php");
+  include("../php/header.php");
+  include("../php/headerEj.php");
 
 ?>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
@@ -27,6 +27,6 @@
     <button type="submit" class="btn btn-default" name="reg_user">Registrarse</button>
   </form>
 <?php
-  include("php/footerEj.php");
-  include("php/footer.php");
+include("../php/footerEj.php");
+include("../php/footer.php");
 ?>

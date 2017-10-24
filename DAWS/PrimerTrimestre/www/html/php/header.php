@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,13 +13,13 @@
     <meta name="keywords" content="">
     <title><?php echo $nameTitle ?></title>
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7cMontserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="css/font-awesome.msession_start();in.css" rel="stylesheet">
+    <link href="/css/font-awesome.msession_start();in.css" rel="stylesheet">
     <!-- Style -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,15 +34,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <a href="/"><img src="images/logo.png" alt="Poned un logo"></a><br>
+                    <a href="/"><img src="/images/logo.png" alt="Poned un logo"></a><br>
                     <?php
                       if (isset($_SESSION["correoUsuario"])){
                         echo $_SESSION["correoUsuario"];
-                        echo "<a class='btn' href='/logout.php'>Log out</a>";
+                        echo "<a class='btn' href='/php/logout.php'>Log out</a>";
                       }
                       if (isset($_SESSION["username"])){
                         echo $_SESSION["username"];
-                        echo "<a class='btn' href='/logout.php'>Log out</a>";
+                        echo "<a class='btn' href='/login/logout.php'>Log out</a>";
                       }
                     ?>
                 </div>
@@ -51,7 +55,12 @@
                             if (is_dir($dir)) {
                               if ($dh = opendir($dir)) {
                                 echo "<ul>";
+                                $prueba = array();
                                 while (($file = readdir($dh)) !== false) {
+                                  array_push($prueba, $file);
+                                }
+                                natcasesort($prueba);
+                                foreach ($prueba as $file) {
                                   $ext= pathinfo($file, PATHINFO_EXTENSION);
                                   if ($file !== "index.php"){
                                     if ($ext == "php"){

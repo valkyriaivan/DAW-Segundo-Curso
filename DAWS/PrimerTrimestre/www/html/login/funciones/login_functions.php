@@ -24,7 +24,7 @@
         if (empty($password_1)) { array_push($errors, "Se requiere una contraseña"); }
 
         if ($password_1 != $password_2) {
-            array_push($errors, "Las dos contraseñas no coinciden");
+            array_push($errors, "Las dos");
         }
 
         // register user if there are no errors in the form
@@ -40,7 +40,7 @@
             if (isset($_GET["redirect"])){
                 header('location: ' . $_GET["redirect"]);
             }else
-                header('location: index.php');
+                header('location: /login/index.php');
         }
     }
     // ...
@@ -71,8 +71,9 @@
                 if (isset($_GET["redirect"])){
                     header('location: ' . $_GET["redirect"]);
                 }else
-                    header('location: index.php');
-            }else {
+                    header('location: /login/index.php');
+                }
+            else {
               array_push($errors, "Combinación errónea de usuario y contraseña");
             }
         }

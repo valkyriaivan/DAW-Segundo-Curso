@@ -2,21 +2,34 @@
   $nameTitle = "Login completo";
   $tituloEj = "Login completo";
   $descEj = "Página de registro usando base de datos.";
-  include("login/login_functions.php");
-  include("php/header.php");
-  include("php/headerEj.php");
+  include("funciones/login_functions.php");
+  include("../php/header.php");
+  include("../php/headerEj.php");
 
   if (isset($_SESSION['username'])) {?>
     <p>Está registrado como <strong><?php echo $_SESSION['username']; ?></strong></p>
   <?php
-    }else{
-      if ($error){
-        //Mostrar todos los mensajes de error
-        for ($i = 0; $i < sizeOf($errors); $i++)
-          echo "<div class='alert alert-danger' role='alert'>$errors[$i]</div>";
-      }
+  }else{
+    if ($error){
+      //Mostrar todos los mensajes de error
+      for ($i = 0; $i < sizeOf($errors); $i++)
+        echo "<div class='alert alert-danger' role='alert'>$errors[$i]</div>";
+    }
+    if (isset($_SESSION['msg'])){
+      //Mostrar todos los mensajes de error
+      echo "<div class='alert alert-danger' role='alert'>$_SESSION[msg]</div>";
+    }
+
+    
+    if (isset($_GET["redirect"])){
+      $prueba =  htmlspecialchars($_SERVER['PHP_SELF']) . "?redirect=" . $_GET["redirect"];
+    }
+    else{
+      $prueba = htmlspecialchars($_SERVER['PHP_SELF']);
+    }
     ?>
-      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+
+      <form action="<?php echo $prueba?>" method="post">
         <div class="form-group">
           <label for="correo">Nombre de usuari@</label>
           <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu correo electrónico">
@@ -29,6 +42,6 @@
       </form>
     <?php
     }
-  include("php/footerEj.php");
-  include("php/footer.php");
+  include("../php/footerEj.php");
+  include("../php/footer.php");
 ?>
