@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +13,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i%7cMontserrat:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.msession_start();in.css" rel="stylesheet">
     <!-- Style -->
     <link href="css/style.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,7 +30,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <a href="/"><img src="images/logo.png" alt="Poned un logo"></a>
+                    <a href="/"><img src="images/logo.png" alt="Poned un logo"></a><br>
+                    <?php
+                      if (isset($_SESSION["correoUsuario"])){
+                        echo $_SESSION["correoUsuario"];
+                        echo "<a class='btn' href='/logout.php'>Log out</a>";
+                      }
+                      if (isset($_SESSION["username"])){
+                        echo $_SESSION["username"];
+                        echo "<a class='btn' href='/logout.php'>Log out</a>";
+                      }
+                    ?>
                 </div>
                 <div class="col-lg-8 col-md-4 col-sm-12 col-xs-12">
                     <div class="navigation">
