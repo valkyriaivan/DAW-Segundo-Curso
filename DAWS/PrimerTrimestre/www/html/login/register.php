@@ -25,6 +25,9 @@
       <input type="password" class="form-control" id="password_2" name="password_2" placeholder="Introduce una contraseña">
     </div>
     <button type="submit" class="btn btn-default" name="reg_user">Registrarse</button>
+    <?php
+    echo "<p>¿Ya eres miembro? <a href='login_completo.php'>Acceso usuari@s</a></p>";
+    ?>
   </form>
 <?php
 include("../php/footerEj.php");

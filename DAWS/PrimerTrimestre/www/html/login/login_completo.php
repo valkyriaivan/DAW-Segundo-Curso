@@ -18,9 +18,10 @@
     if (isset($_SESSION['msg'])){
       //Mostrar todos los mensajes de error
       echo "<div class='alert alert-danger' role='alert'>$_SESSION[msg]</div>";
+      unset($_SESSION['msg']);
     }
 
-    
+
     if (isset($_GET["redirect"])){
       $prueba =  htmlspecialchars($_SERVER['PHP_SELF']) . "?redirect=" . $_GET["redirect"];
     }
@@ -39,6 +40,9 @@
           <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu correo electrónico">
         </div>
         <button type="submit" class="btn btn-default" name="login_user">Acceder</button>
+        <?php
+        echo "<p>¿Todavía no eres miembro? <a href='register.php'>Registrate</a></p>";
+        ?>
       </form>
     <?php
     }
