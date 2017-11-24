@@ -8,9 +8,10 @@
 
   if (isset($_SESSION['username'])) {?>
     <p>Está registrado como <strong><?php echo $_SESSION['username']; ?></strong></p>
+    <p>¿Quiere volver a el indice? <a href='index.php'>Volver a indice</a></p>
   <?php
   }else{
-    if ($error){
+    if (count($errors) > 0){
       //Mostrar todos los mensajes de error
       for ($i = 0; $i < sizeOf($errors); $i++)
         echo "<div class='alert alert-danger' role='alert'>$errors[$i]</div>";
@@ -21,23 +22,21 @@
       unset($_SESSION['msg']);
     }
 
-
     if (isset($_GET["redirect"])){
-      $prueba =  htmlspecialchars($_SERVER['PHP_SELF']) . "?redirect=" . $_GET["redirect"];
+      $redirect =  htmlspecialchars($_SERVER['PHP_SELF']) . "?redirect=" . $_GET["redirect"];
     }
     else{
-      $prueba = htmlspecialchars($_SERVER['PHP_SELF']);
+      $redirect = htmlspecialchars($_SERVER['PHP_SELF']);
     }
     ?>
-
-      <form action="<?php echo $prueba?>" method="post">
-        <div class="form-group">
+      <form action="<?php echo $redirect;?>" method="post">
+        <div class="form-group <?php if ($nombreErr) echo 'has-error';?>">
           <label for="correo">Nombre de usuari@</label>
-          <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu correo electrónico">
+          <input type="text" class="form-control" id="username" name="username" placeholder="Introduce tu usuario" value="<?php echo $username;?>">
         </div>
-        <div class="form-group">
+        <div class="form-group <?php if ($passErr) echo 'has-error';?>">
           <label for="contra">Contraseña</label>
-          <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu correo electrónico">
+          <input type="password" class="form-control" id="password" name="password" placeholder="Introduce tu contraseña">
         </div>
         <button type="submit" class="btn btn-default" name="login_user">Acceder</button>
         <?php

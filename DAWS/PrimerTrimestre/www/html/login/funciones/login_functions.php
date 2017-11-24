@@ -19,12 +19,17 @@
         $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
         // form validation: ensure that the form is correctly filled
-        if (empty($username)) { array_push($errors, "El nombre de usuario es obligatorio"); }
-        if (empty($email)) { array_push($errors, "El correo electrónico es obligatorio"); }
-        if (empty($password_1)) { array_push($errors, "Se requiere una contraseña"); }
+        if (empty($username)) { array_push($errors, "El nombre de usuario es obligatorio."); $nombreErr = true;}
+        if (empty($email)) { array_push($errors, "El correo electrónico es obligatorio."); $emailErr = true;}
+        if (empty($password_1)) { array_push($errors, "Se requiere una contraseña."); $passErr = true;}
 
         if ($password_1 != $password_2) {
-            array_push($errors, "Las dos");
+            $passErr = true;
+            array_push($errors, "No coinciden las dos contraseñas.");
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          array_push($errors, "Formato inválido de correo");
+          $emailErr = true;
         }
 
         // register user if there are no errors in the form
@@ -51,11 +56,11 @@
         $password = mysqli_real_escape_string($db, $_POST['password']);
 
         if (empty($username)) {
-          $error = true;
+          $nombreErr = true;
           array_push($errors, "Username is required");
         }
         if (empty($password)) {
-          $error = true;
+          $passErr = true;
           array_push($errors, "Password is required");
         }
 
@@ -66,7 +71,7 @@
 
             if (mysqli_num_rows($results) == 1) {
                 $_SESSION["username"] = $username;
-                $_SESSION["success"] = "Ahora estás logeado";
+                $_SESSION["success"] = "Ahora estás logeado.";
                 unset($_SESSION['msg']);
                 if (isset($_GET["redirect"])){
                     header('location: ' . $_GET["redirect"]);
@@ -78,5 +83,4 @@
             }
         }
     }
-
 ?>

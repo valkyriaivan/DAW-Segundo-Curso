@@ -5,5 +5,5 @@
   if (isset($_GET["redirect"])){
     header('location: ' . $_GET["redirect"]);
   }else
-    header('location: /login/index.php');
+    header("location: index.php");
 ?>
